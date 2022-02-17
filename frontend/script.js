@@ -161,22 +161,6 @@ console.log({} === {}); */
 }) */
 
 function loadEvent() {
-    /* let rootElement = document.getElementById("root");
-    
-    let cardElement = function (movieReceive) {
-        return `
-        <div class="card">
-            <h2>${movieReceive.title}</h2>
-            <time>${movieReceive.year}</time>
-            <span>${movieReceive.rate}</span>
-        </div>
-        `;
-    }
-
-    for (const movieSend of movies) {
-        rootElement.insertAdjacentHTML("beforeend", cardElement(movieSend));
-    }
-    console.log(movies); */
 
     let rootElement = document.getElementById("root");
     
@@ -190,16 +174,46 @@ function loadEvent() {
         `;
     }
 
-    let anotherFavoriteMovie = {
-        "title": "TlSb",
-        "year": 1991,
-        "rate": 7.0
+    let renderAllCardElements = function (cardsArray) {
+        let renderedCardList = "";
+        
+        for (const card of cardsArray) {
+            renderedCardList += `
+            <div class="card">
+                <h2>${card.title}</h2>
+                <time>${card.year}</time>
+                <span>${card.rate}</span>
+            </div>
+            `;
+        }
+        return renderedCardList;
     }
-    rootElement.insertAdjacentHTML("beforeend", cardElement2(anotherFavoriteMovie.title, anotherFavoriteMovie.year, anotherFavoriteMovie.rate));
+
+    /* movies.sort(function(a, b){return a.year - b.year}); */
+    let newGoodMovies = [];
 
     for (const movieSend of movies) {
-        rootElement.insertAdjacentHTML("beforeend", cardElement2(movieSend.title, movieSend.year, movieSend.rate));
+        /* let newerThan2000 = false;
+
+        if (movieSend.year > 2000) {
+            newerThan2000 = true;
+        }
+
+        if (newerThan2000) {
+            rootElement.insertAdjacentHTML("beforeend", cardElement2(movieSend.title, movieSend.year, movieSend.rate));
+        } */
+        //let floorRate = Math.floor(movieSend.rate);
+        
+
+        if (movieSend.year > 2000 && movieSend.rate >= 8) {
+            newGoodMovies.push(movieSend);
+            //rootElement.insertAdjacentHTML("beforeend", cardElement2(movieSend.title, movieSend.year, floorRate));
+        }
     }
+    newGoodMovies.sort(function(a, b){return a.year - b.year});
+    
+    rootElement.insertAdjacentHTML("beforeend", renderAllCardElements(newGoodMovies));
+
 
 }
 
