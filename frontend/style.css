@@ -42,6 +42,7 @@ ol, ul, li {
 #root {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
@@ -52,68 +53,29 @@ ol, ul, li {
 
 #root .card {
     display: flex;
-    flex-basis: calc(30% - 10px);
+    flex-basis: max-content;
+
+    flex: 0 1 content;
+    /* flex-basis: calc(30% - 10px); */
     flex-direction: column;
     border: 1px solid #000;
+    display: none;
+    /* flex-basis: 600px; */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
 #root .card:nth-child(1) {
-    order: 2;
-    background-color: rgb(80, 62, 114);
+    align-self: stretch;
+    display: block;
+    background: rgb(0, 128, 0);
 }
 
 #root .card:nth-child(2) {
-    order: 1;
-    background-color: rgb(126, 93, 93);
+    display: block;
+    background: rgb(255, 0, 0);
 }
 
 #root .card:nth-child(3) {
-    order: 3;
-    background-color: rgb(226, 210, 210);
+    display: block;
+    align-self: initial;
+    background: rgb(0, 0, 255);
 }
-
-#root .card:nth-child(8) {
-    order: 5;
-    background-color: rgb(231, 25, 25);
-} */
-
